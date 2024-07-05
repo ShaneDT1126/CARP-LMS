@@ -1,6 +1,5 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+
 </script>
 
 <template>
@@ -9,6 +8,6 @@ import HelloWorld from './components/HelloWorld.vue'
   </h1>
 </template>
 
-<style scoped>
-
+<style lang="scss">
+@import '../node_modules/bulma';
 </style>
