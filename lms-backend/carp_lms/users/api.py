@@ -26,3 +26,13 @@ def signup(request):
         return Response({'errors': form.errors}, status=status.HTTP_400_BAD_REQUEST)
 
     return JsonResponse({'message': response})
+
+
+@api_view(['GET'])
+def me(request):
+    return JsonResponse({
+        'id': request.user.id,
+        'first_name': request.user.first_name,
+        'last_name': request.user.last_name,
+        'email': request.user.email
+    })
