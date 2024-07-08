@@ -8,6 +8,7 @@ import axios from "axios";
 import PrimeVue from "primevue/config"
 import ToastService from 'primevue/toastservice';
 import Aura from '@primevue/themes/aura';
+import InputText from 'primevue/inputtext';
 
 import App from './App.vue'
 import router from './router'
@@ -23,6 +24,6 @@ app.use(PrimeVue, {
         preset: Aura,
     }
 })
-app.use(ToastService)
+app.use(ToastService, InputText)
 
 app.mount('#app')
