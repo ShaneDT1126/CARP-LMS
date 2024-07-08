@@ -11,9 +11,11 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@primevue/themes": "^4.0.0",
     "axios": "^1.7.2",
     "bulma": "^1.0.1",
     "pinia": "^2.1.7",
+    "primevue": "^4.0.0",
     "vue": "^3.4.29",
     "vue-router": "^4.3.3"
   },

@@ -8,26 +8,28 @@
       <div class="w-full max-w-md space-y-8">
         <!-- Logo and title -->
         <div class="text-center">
-          <h2 class="mt-6 text-3xl font-bold text-blue-600">CARP.ED</h2>
+          <h2 class="mt-6 text-xl3 font-bold text-blue-600">CARP.ED</h2>
         </div>
 
         <!-- Login form -->
         <form class="mt-8 space-y-6" @submit.prevent="handleSubmit">
           <div class="space-y-4">
             <div>
-              <input
-                     class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                     placeholder="Enter your Username">
+              <label class="text-vsm text-black">Email</label>
+              <input type="email"
+                     class="required:border-red-500 appearance-none relative block w-full px-3 py-2 border border-blue-600 placeholder-gray-500 text-gray-900 rounded focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                     placeholder="Enter your Email">
             </div>
             <div>
-              <input required
-                     class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+              <label class="text-vsm text-black">Password</label>
+              <input type="password"
+                     class="required:border-red-500 appearance-none relative block w-full px-3 py-2 border border-blue-600 placeholder-gray-500 text-gray-900 rounded focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
                      placeholder="Enter your Password">
             </div>
           </div>
-          <p class="mt-2 text-right underline text-sm text-gray-600">
+          <p class="mt-2 text-right underline underline-offset-2 text-sm text-blue-600">
             <router-link :to="{name: 'signup-page'}" class="font-medium text-blue-600 hover:text-blue-500">
-              Forgor Password
+              Forgor Password?
             </router-link>
           </p>
 
