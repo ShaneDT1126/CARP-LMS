@@ -1,4 +1,6 @@
 from django.http import JsonResponse
+from rest_framework.response import Response
+from rest_framework import status
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from .forms import SignupForm
 
@@ -21,6 +23,6 @@ def signup(request):
     if form.is_valid():
         form.save()
     else:
-        response = 'Error'
+        return Response({'errors': form.errors}, status=status.HTTP_400_BAD_REQUEST)
 
-    return JsonResponse({'response': response})
+    return JsonResponse({'message': response})
