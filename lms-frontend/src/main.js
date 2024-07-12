@@ -9,6 +9,7 @@ import PrimeVue from "primevue/config"
 import ToastService from 'primevue/toastservice';
 import Aura from '@primevue/themes/aura';
 import InputText from 'primevue/inputtext';
+import Dialog from 'primevue/dialog';
 
 import App from './App.vue'
 import router from './router'
@@ -24,6 +25,6 @@ app.use(PrimeVue, {
         preset: Aura,
     }
 })
-app.use(ToastService, InputText)
+app.use(ToastService, InputText, Dialog)
 
 app.mount('#app')

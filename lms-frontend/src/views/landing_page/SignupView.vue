@@ -72,6 +72,11 @@ import {authAPI} from "@/services/api.js";
 export default {
   name: 'SignupView',
 
+  props: [
+      'is_student',
+      'is_teacher'
+  ],
+
   setup(){
 
   },
