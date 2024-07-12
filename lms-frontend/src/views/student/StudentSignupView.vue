@@ -17,26 +17,26 @@
             <div>
               <label class="text-vsm text-black">First name</label>
               <input type="text" v-model="form.first_name" required
-                  class="appearance-none relative block w-full px-3 py-2 border border-blue-600 placeholder-gray-500 text-gray-900 rounded focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                  placeholder="Enter your First Name">
+                     class="appearance-none relative block w-full px-3 py-2 border border-blue-600 placeholder-gray-500 text-gray-900 rounded focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                     placeholder="Enter your First Name">
             </div>
             <div>
               <label class="text-vsm text-black">Last name</label>
               <input type="text" v-model="form.last_name" required
-                  class="appearance-none relative block w-full px-3 py-2 border border-blue-600 placeholder-gray-500 text-gray-900 rounded focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                  placeholder="Enter your Last Name">
+                     class="appearance-none relative block w-full px-3 py-2 border border-blue-600 placeholder-gray-500 text-gray-900 rounded focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                     placeholder="Enter your Last Name">
             </div>
             <div>
               <label class="text-vsm text-black">Email</label>
               <input type="email" v-model="form.email" required
-                  class="appearance-none relative block w-full px-3 py-2 border border-blue-600 placeholder-gray-500 text-gray-900 rounded focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                  placeholder="Enter your Email">
+                     class="appearance-none relative block w-full px-3 py-2 border border-blue-600 placeholder-gray-500 text-gray-900 rounded focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                     placeholder="Enter your Email">
             </div>
             <div>
               <label class="text-vsm text-black">Password</label>
               <input type="password" v-model="form.password1" required
-                  class="appearance-none relative block w-full px-3 py-2 border border-blue-600 placeholder-gray-500 text-gray-900 rounded focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                  placeholder="Enter your Username">
+                     class="appearance-none relative block w-full px-3 py-2 border border-blue-600 placeholder-gray-500 text-gray-900 rounded focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                     placeholder="Enter your Username">
             </div>
             <div>
               <label class="text-vsm text-black">Re-type Password</label>
@@ -83,7 +83,9 @@ export default {
         first_name: '',
         last_name: '',
         password1: '',
-        password2: ''
+        password2: '',
+        is_student: true,
+        is_teacher: false,
       },
       errors: [],
     }
@@ -124,6 +126,7 @@ export default {
                 this.form.last_name = ''
                 this.form.password1 = ''
                 this.form.password2 = ''
+
 
                 this.$router.push({name: 'login-page'})
 

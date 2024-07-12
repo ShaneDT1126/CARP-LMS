@@ -1,12 +1,19 @@
 <template>
-  <h1>
-    Landing Page View
-  </h1>
+  <div>
+    <router-link :to="{name: 'login-page'}">Login</router-link>
+    <br>
+    <button @click="visibleToggle">Get Started</button>
+    <Dialog v-model:visible="visible" modal header="Account Type" :style="{ width: '25rem' }">
+      <router-link :to="{name: 'student-signup'}">Student</router-link>
+      <router-link :to="{name: 'teacher-signup'}">Teacher</router-link>
+    </Dialog>
+  </div>
 </template>
 
 
 
 <script>
+import Dialog from "primevue/dialog";
 
 export default {
   name: 'landing-page',
@@ -14,10 +21,17 @@ export default {
   data() {
     return{
       visible: false,
-      is_student: false,
-      is_teacher: false,
     }
   },
+
+  methods: {
+    visibleToggle(){
+      this.visible = !this.visible
+      console.log('visible',this.visible)
+    }
+  },
+
+  components: {Dialog}
 
 }
 
