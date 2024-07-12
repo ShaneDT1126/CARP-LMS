@@ -17,7 +17,9 @@ def signup(request):
         'first_name': data.get('first_name'),
         'last_name': data.get('last_name'),
         'password1': data.get('password1'),
-        'password2': data.get('password2')
+        'password2': data.get('password2'),
+        'is_student': data.get('is_student'),
+        'is_teacher': data.get('is_teacher')
     })
 
     if form.is_valid():
@@ -34,5 +36,7 @@ def me(request):
         'id': request.user.id,
         'first_name': request.user.first_name,
         'last_name': request.user.last_name,
-        'email': request.user.email
+        'email': request.user.email,
+        'is_student': request.user.is_student,
+        'is_teacher': request.user.is_teacher
     })
