@@ -67,9 +67,15 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'corsheaders',
     'djoser',
-    'users'
+    'users',
+    'classes',
+    'storages',
 ]
 
+DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
+AZURE_ACCOUNT_NAME = ''
+AZURE_ACCOUNT_KEY = ''
+AZURE_CONTAINER = ''
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
