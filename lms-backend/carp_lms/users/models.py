@@ -66,11 +66,21 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='student_profile')
-    student_id = models.CharField(max_length=20, unique=True)
-    # Add other student-specific fields
+    student_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+
+    IT = 'information_technology'
+    CS = 'computer_science'
+    major_choices = (
+        (IT, 'Information Technology'),
+        (CS, 'Computer Science'),
+    )
+    major = models.CharField(choices=major_choices, max_length=50, null=True, blank=True)
+
+    # enrolled course, quiz_scores, last_login
 
 
 class Teacher(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='teacher_profile')
-    teacher_id = models.CharField(max_length=20, unique=True)
-    # Add other teacher-specific fields
+    teacher_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+
+    # course,

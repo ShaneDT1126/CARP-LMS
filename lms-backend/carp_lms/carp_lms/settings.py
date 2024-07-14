@@ -73,9 +73,10 @@ INSTALLED_APPS = [
 ]
 
 DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
-AZURE_ACCOUNT_NAME = ''
+AZURE_ACCOUNT_NAME = 'carplms'
 AZURE_ACCOUNT_KEY = ''
-AZURE_CONTAINER = ''
+AZURE_CONTAINER_VIDEOS = 'video-lessons'
+AZURE_CONTAINER_PHOTOS = 'photos'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

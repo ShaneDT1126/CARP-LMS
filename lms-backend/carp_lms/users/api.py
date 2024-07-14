@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from .forms import SignupForm
+from .models import Student, Teacher
 
 
 @api_view(['POST'])
@@ -23,7 +24,14 @@ def signup(request):
     })
 
     if form.is_valid():
-        form.save()
+        user = form.save()
+
+        if user.is_student:
+            Student.objects.create(user=user)
+
+        if user.is_teacher:
+            Teacher.objects.create(user=user)
+
     else:
         return Response({'errors': form.errors}, status=status.HTTP_400_BAD_REQUEST)
 
