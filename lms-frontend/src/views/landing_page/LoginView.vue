@@ -98,7 +98,13 @@ export default {
       await authAPI.me()
           .then(res => {
             this.userStore.setUserInfo(res.data)
-            this.$router.push({name: 'student-dashboard'})
+            if (res.data.is_student){
+              this.$router.push({name: 'student-dashboard'})
+            }
+            if (res.data.is_teacher){
+              this.$router.push({name: 'teacher-dashboard'})
+            }
+
           })
           .catch(err => {
             console.log('Error: ', err)
