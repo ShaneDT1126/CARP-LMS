@@ -85,7 +85,11 @@ export default {
         { id: 3, title: 'III. Boolean Algebra And Logic Gates', course: 'CSIT243 - F1', progress: 0 },
       ]
     }
-  }
+  },
+
+  mounted() {
+    document.title = "Dashboard | CARP.ED"
+  },
 }
 </script>
 

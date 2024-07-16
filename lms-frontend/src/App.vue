@@ -23,6 +23,7 @@ export default {
     }
   },
 
+
   beforeCreate() {
     this.userStore.initStore()
 

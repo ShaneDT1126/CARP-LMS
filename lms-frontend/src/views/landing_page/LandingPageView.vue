@@ -31,7 +31,13 @@ export default {
     }
   },
 
-  components: {Dialog}
+  components: {
+    Dialog,
+  },
+
+  mounted() {
+    document.title = "CARP.ED"
+  }
 
 }
 

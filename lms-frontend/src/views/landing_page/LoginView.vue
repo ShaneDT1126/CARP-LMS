@@ -110,6 +110,10 @@ export default {
             console.log('Error: ', err)
           })
     },
+  },
+
+  mounted() {
+    document.title = 'Login | CARP.ED'
   }
 }
 </script>

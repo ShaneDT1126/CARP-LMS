@@ -139,6 +139,10 @@ export default {
       }
 
     }
+  },
+
+  mounted() {
+    document.title = 'Sign Up | CARP.ED'
   }
 
 }
