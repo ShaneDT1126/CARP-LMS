@@ -43,7 +43,26 @@ class Lesson(models.Model):
     lesson_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     class_id = models.ForeignKey(Class, on_delete=models.CASCADE, related_name='lessons')
     title = models.CharField(max_length=200)
+    order = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return f"{self.class_id.title} - {self.title}"
+
+    class Meta:
+        verbose_name = 'Lesson'
+        verbose_name_plural = 'Lessons'
+        ordering = ['order']
+
+
+class LessonContent(models.Model):
+    content_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, related_name='lesson_contents')
+    title = models.CharField(max_length=200)
     content = models.TextField()
+    order = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return f"{self.lesson.title} - {self.title}"
 
 
 class Quiz(models.Model):
@@ -58,4 +77,3 @@ class QuizAttempt(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
     score = models.FloatField()
     date_attempted = models.DateTimeField(default=timezone.now)
-
