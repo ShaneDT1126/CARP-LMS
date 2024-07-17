@@ -1,5 +1,5 @@
 from django.db import models
-from users.models import Users, Student, Teacher
+from users.models import User, Student, Teacher
 import uuid
 from django.utils.crypto import get_random_string
 from django.utils import timezone
