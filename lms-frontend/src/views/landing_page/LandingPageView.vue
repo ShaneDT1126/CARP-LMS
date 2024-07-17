@@ -27,7 +27,6 @@ export default {
   methods: {
     visibleToggle(){
       this.visible = !this.visible
-      console.log('visible',this.visible)
     }
   },
 

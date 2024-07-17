@@ -1,12 +1,12 @@
 <template>
-  <div class="flex h-screen bg-gray-100">
+  <div class="flex flex-col lg:flex-row h-screen bg-gray-100">
     <!-- Sidebar -->
-    <nav class="w-56 bg-blue-600 text-white p-3 flex flex-col justify-between">
+    <nav class="w-full lg:w-56 bg-blue-600 text-white p-3 flex flex-col justify-between">
       <div>
         <div class="mb-8">
           <h6 class="text-xl font-bold">CARP.ED</h6>
         </div>
-        <ul class="mt-24 space-y-4">
+        <ul class="mt-8 lg:mt-24 space-y-4">
           <li>
             <router-link to="" class="block mb-5 pl-2 hover:bg-blue-700 rounded-md text-white outline outline-offset-2 outline-1">Dashboard</router-link>
           </li>
@@ -19,7 +19,11 @@
         </ul>
       </div>
       <div class="mt-auto">
-        <router-link to="/logout" class="block pl-2 underline underline-offset-2 text-white">Logout</router-link>
+        <button @click="logoutModalToggle" class="block pl-2 underline underline-offset-2 text-white">Logout</button>
+        <Dialog v-model:visible="visible" modal header="Are you sure you want to logout?" :style="{ width: '25rem' }">
+          <button @click="logout">Yes</button>
+          <button @click="logoutModalToggle">No</button>
+        </Dialog>
       </div>
     </nav>
 
@@ -39,12 +43,11 @@
 
         <!-- Profile Card -->
         <div class="bg-white rounded-t-lg shadow p-6 mb-8 outline outline-blue-600 outline-1 relative">
-          <div class="absolute top-2 right-2">
-          </div>
+          <div class="absolute top-2 right-2"></div>
           <div class="flex items-center">
             <div class="w-16 h-16 bg-gray-300 rounded-full mr-4"></div>
             <div>
-              <h2 class="text-xl font-bold text-black">{{ studentName }}</h2>
+              <h2 class="text-xl font-bold text-black">{{ userStore.user.first_name }} {{ userStore.user.last_name }}</h2>
               <p class="text-gray-600">{{ studentInfo }}</p>
             </div>
           </div>
@@ -54,7 +57,7 @@
 
         <!-- Recent Lessons -->
         <h2 class="text-xl font-semibold mb-8 text-blue-600">Your Recent Lessons</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div v-for="lesson in recentLessons" :key="lesson.id" class="bg-white rounded-t-lg shadow p-6 mb-8 outline outline-blue-600 outline-1">
             <div>
               <div class="mb-2">Progress: {{ lesson.progress }}%</div>
@@ -72,12 +75,27 @@
 
 
 <script>
+import Dialog from "primevue/dialog";
+import {useUserStore} from "@/stores/userStore.js";
+
 export default {
   name: 'StudentDashboardView',
 
+  components: {
+    Dialog
+  },
+
+  setup(){
+    const userStore = useUserStore()
+
+    return {
+      userStore
+    }
+  },
+
   data() {
     return {
-      studentName: 'Sheer Jay A. Piodos',
+      visible: false,
       studentInfo: 'Student || Computer Science',
       recentLessons: [
         { id: 1, title: 'I. Introduction To Computer Organization And Architecture', course: 'CSIT243 - F1', progress: 75 },
@@ -85,6 +103,16 @@ export default {
         { id: 3, title: 'III. Boolean Algebra And Logic Gates', course: 'CSIT243 - F1', progress: 0 },
       ]
     }
+  },
+
+  methods:{
+    logoutModalToggle(){
+      this.visible = !this.visible
+    },
+    logout(){
+      this.userStore.removeToken()
+      this.$router.push({name: 'login-page'})
+    },
   },
 
   mounted() {

@@ -43,6 +43,7 @@ export const useUserStore = defineStore(
 
             localStorage.setItem('user.access', data.access)
             localStorage.setItem('user.refresh', data.refresh)
+
         },
 
         removeToken(){
@@ -64,6 +65,7 @@ export const useUserStore = defineStore(
             localStorage.setItem('user.email', '')
             localStorage.setItem('user.is_student', '')
             localStorage.setItem('user.is_teacher', '')
+
         },
 
         setUserInfo(user){
