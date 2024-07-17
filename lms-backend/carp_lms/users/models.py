@@ -84,3 +84,6 @@ class Teacher(models.Model):
     teacher_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
     # course,
+
+    def __str__(self):
+        return self.user.first_name + ' ' + self.user.last_name

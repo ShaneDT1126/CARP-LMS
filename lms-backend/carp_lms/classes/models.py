@@ -7,6 +7,7 @@ from django.utils import timezone
 
 class Class(models.Model):
     course_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    class_code = models.CharField(max_length=50, unique=True, blank=True, null=True)
     title = models.CharField(max_length=200)
     description = models.TextField()
     teachers = models.ForeignKey(Teacher, on_delete=models.CASCADE, related_name='classes')
@@ -22,6 +23,13 @@ class Class(models.Model):
             code = get_random_string(length=6, allowed_chars='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789')
             if not Class.objects.filter(enrollment_code=code).exists():
                 return code
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Class'
+        verbose_name_plural = 'Classes'
 
 
 class Enrollment(models.Model):
