@@ -9,7 +9,7 @@ class Class(models.Model):
     course_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     class_code = models.CharField(max_length=50, unique=True, blank=True, null=True)
     title = models.CharField(max_length=200)
-    description = models.TextField()
+    description = models.TextField(null=True, blank=True)
     teachers = models.ForeignKey(Teacher, on_delete=models.CASCADE, related_name='classes')
     enrollment_code = models.CharField(max_length=6, unique=True, blank=True)
 
