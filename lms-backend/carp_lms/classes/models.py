@@ -77,3 +77,7 @@ class QuizAttempt(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
     score = models.FloatField()
     date_attempted = models.DateTimeField(default=timezone.now)
+
+
+class VideoLessonContent(models.Model):
+    lesson_content = ''
