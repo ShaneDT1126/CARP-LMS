@@ -44,9 +44,11 @@
 
         <p class="mt-2 text-center text-sm text-gray-600">
           Don't have an account yet?
-          <router-link :to="{name: 'signup-page'}" class="font-medium text-blue-600 hover:text-blue-500">
-            Sign up here
-          </router-link>
+          <button @click="visibleToggle" class="font-medium text-blue-600 hover:text-blue-500">Get Started</button>
+          <Dialog v-model:visible="visible" modal header="Account Type" :style="{ width: '25rem' }">
+            <router-link :to="{name: 'student-signup'}">Student</router-link>
+            <router-link :to="{name: 'teacher-signup'}">Teacher</router-link>
+          </Dialog>
         </p>
 
 
@@ -60,11 +62,17 @@
 import {authAPI} from "@/services/api.js";
 import {useUserStore} from "@/stores/userStore.js";
 import axios from "axios";
+import Dialog from 'primevue/dialog'
 export default {
   name: 'LoginPage',
 
+  components: {
+    Dialog
+  },
+
   data(){
     return{
+      visible: false,
       form: {
         email: '',
         password: ''
@@ -110,6 +118,10 @@ export default {
             console.log('Error: ', err)
           })
     },
+
+    visibleToggle(){
+      this.visible = !this.visible
+    }
   },
 
   mounted() {
