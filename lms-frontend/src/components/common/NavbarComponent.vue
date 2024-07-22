@@ -6,10 +6,10 @@
       </div>
       <ul class="mt-8 lg:mt-24 space-y-4">
         <li>
-          <router-link to="" class="block mb-5 pl-2 hover:bg-blue-700 rounded-md text-white outline outline-offset-2 outline-1">Dashboard</router-link>
+          <router-link :to="{name: 'student-dashboard'}" class="block mb-5 pl-2 hover:bg-blue-700 rounded-md text-white outline outline-offset-2 outline-1">Dashboard</router-link>
         </li>
         <li>
-          <router-link to="" class="block mb-5 pl-2 hover:bg-blue-700 rounded-md text-white outline outline-offset-2 outline-1">Classes</router-link>
+          <router-link :to="{name: 'student-classes'}" class="block mb-5 pl-2 hover:bg-blue-700 rounded-md text-white outline outline-offset-2 outline-1">Classes</router-link>
         </li>
         <li>
           <router-link to="" class="block pl-2 hover:bg-blue-700 rounded-md text-white outline outline-offset-2 outline-1">CARP</router-link>

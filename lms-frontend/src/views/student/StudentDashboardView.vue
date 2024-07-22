@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col lg:flex-row h-screen bg-gray-100">
+  <div class="flex flex-col lg:flex-row h-screen">
     <!-- Sidebar -->
     <NavbarComponent />
 
