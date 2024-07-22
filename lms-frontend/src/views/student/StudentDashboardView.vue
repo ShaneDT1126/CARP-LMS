@@ -6,12 +6,7 @@
     <!-- Main Content -->
     <div class="flex-1 flex flex-col overflow-hidden">
       <!-- Header -->
-      <header class="bg-blue-600 p-4 h-20 border-l-2">
-        <div class="flex justify-end items-center h-full">
-          <input type="text" placeholder="Search..." class="p-2 mr-2 w-48 h-8">
-          <button class="bg-blue-400 text-white w-48 h-8 mr-12">+ ENROLL A CLASS</button>
-        </div>
-      </header>
+      <StudentHeader/>
 
       <!-- Content -->
       <main class="flex-1 overflow-y-auto p-6">
@@ -54,13 +49,15 @@
 import Dialog from "primevue/dialog";
 import {useUserStore} from "@/stores/userStore.js";
 import NavbarComponent from "@/components/common/NavbarComponent.vue";
+import StudentHeader from "@/components/student/StudentHeader.vue";
 
 export default {
   name: 'StudentDashboardView',
 
   components: {
     Dialog,
-    NavbarComponent
+    NavbarComponent,
+    StudentHeader,
   },
 
   setup(){
