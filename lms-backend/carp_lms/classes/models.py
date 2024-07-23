@@ -1,5 +1,4 @@
 from django.db import models
-from users.models import User, Student, Teacher
 import uuid
 from django.utils.crypto import get_random_string
 from django.utils import timezone
@@ -10,7 +9,7 @@ class Class(models.Model):
     class_code = models.CharField(max_length=50, unique=True, blank=True, null=True)
     title = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
-    teachers = models.ForeignKey(Teacher, on_delete=models.CASCADE, related_name='classes')
+    teachers = models.ForeignKey('users.Teacher', on_delete=models.CASCADE, related_name='classes')
     enrollment_code = models.CharField(max_length=6, unique=True, blank=True)
 
     def save(self, *args, **kwargs):
@@ -33,7 +32,7 @@ class Class(models.Model):
 
 
 class Enrollment(models.Model):
-    student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='enrollments')
+    student = models.ForeignKey('users.Student', on_delete=models.CASCADE, related_name='enrollments')
     class_course = models.ForeignKey(Class, on_delete=models.CASCADE, related_name='enrollments')
     date_enrolled = models.DateTimeField(default=timezone.now)
     is_active = models.BooleanField(default=True)
@@ -73,7 +72,7 @@ class Quiz(models.Model):
 
 
 class QuizAttempt(models.Model):
-    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    student = models.ForeignKey('users.Student', on_delete=models.CASCADE)
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
     score = models.FloatField()
     date_attempted = models.DateTimeField(default=timezone.now)

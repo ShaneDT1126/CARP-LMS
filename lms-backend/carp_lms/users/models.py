@@ -2,7 +2,7 @@ import uuid
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager
 from django.utils import timezone
-from classes.models import Class
+
 
 class CustomUserManager(UserManager):
     def _create_user(self, email, password=None, **extra_fields):
@@ -76,7 +76,7 @@ class Student(models.Model):
     )
     major = models.CharField(choices=major_choices, max_length=50, null=True, blank=True)
 
-    enrolled_class = models.ForeignKey(Class, on_delete=models.CASCADE, related_name='students', null=True, blank=True)
+    enrolled_class = models.ForeignKey('classes.Class', on_delete=models.CASCADE, related_name='student_profile', null=True, blank=True)
     # enrolled course, quiz_scores, last_login
 
 
