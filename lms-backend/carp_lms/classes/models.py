@@ -5,7 +5,7 @@ from django.utils import timezone
 
 
 class Class(models.Model):
-    course_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    class_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     class_code = models.CharField(max_length=50, unique=True, blank=True, null=True)
     title = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
@@ -36,6 +36,9 @@ class Enrollment(models.Model):
     class_course = models.ForeignKey(Class, on_delete=models.CASCADE, related_name='enrollments')
     date_enrolled = models.DateTimeField(default=timezone.now)
     is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f'{self.student.user.get_full_name()} enrolled in {self.class_course.title}'
 
 
 class Lesson(models.Model):

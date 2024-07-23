@@ -76,8 +76,8 @@ class Student(models.Model):
     )
     major = models.CharField(choices=major_choices, max_length=50, null=True, blank=True)
 
-    enrolled_class = models.ForeignKey('classes.Class', on_delete=models.CASCADE, related_name='student_profile', null=True, blank=True)
-    # enrolled course, quiz_scores, last_login
+
+    # quiz_scores, last_login
 
     def __str__(self):
         return self.user.first_name + " " + self.user.last_name

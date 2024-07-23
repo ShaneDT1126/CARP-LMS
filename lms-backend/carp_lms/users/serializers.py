@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Student, Teacher, User
+from classes.serializers import EnrollmentSerializer
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -9,6 +10,8 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class StudentSerializer(serializers.ModelSerializer):
+    enrolled_class = EnrollmentSerializer(many=True, read_only=True)
+
     class Meta:
         model = Student
-        fields = ('major', 'enrolled_class')
+        fields = ['major', 'enrolled_class']

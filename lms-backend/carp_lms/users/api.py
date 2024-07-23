@@ -49,9 +49,9 @@ def me(request):
 
 @api_view(['GET'])
 def student_user(request):
+    if not request.user.is_student:
+        return Response({'error': 'User is not a student'}, status=status.HTTP_400_BAD_REQUEST)
+
     student = Student.objects.get(user=request.user)
     serializer = StudentSerializer(student)
-    if request.user.is_student:
-        return Response(serializer.data)
-    else:
-        return Response({'error': 'User is not a student'}, status=status.HTTP_400_BAD_REQUEST)
+    return Response(serializer.data)
