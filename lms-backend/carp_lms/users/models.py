@@ -76,7 +76,6 @@ class Student(models.Model):
     )
     major = models.CharField(choices=major_choices, max_length=50, null=True, blank=True)
 
-
     # quiz_scores, last_login
 
     def __str__(self):
