@@ -61,7 +61,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.first_name
 
     def __str__(self):
-        return self.email
+        return self.first_name + " " + self.last_name
 
 
 class Student(models.Model):
@@ -78,6 +78,9 @@ class Student(models.Model):
 
     enrolled_class = models.ForeignKey('classes.Class', on_delete=models.CASCADE, related_name='student_profile', null=True, blank=True)
     # enrolled course, quiz_scores, last_login
+
+    def __str__(self):
+        return self.user.first_name + " " + self.user.last_name
 
 
 class Teacher(models.Model):

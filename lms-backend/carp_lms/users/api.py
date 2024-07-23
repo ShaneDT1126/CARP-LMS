@@ -3,7 +3,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from .forms import SignupForm
-from .models import Student, Teacher
+from .models import Student, Teacher, User
+from .serializers import UserSerializer, StudentSerializer
 
 
 @api_view(['POST'])
@@ -40,11 +41,17 @@ def signup(request):
 
 @api_view(['GET'])
 def me(request):
-    return JsonResponse({
-        'id': request.user.id,
-        'first_name': request.user.first_name,
-        'last_name': request.user.last_name,
-        'email': request.user.email,
-        'is_student': request.user.is_student,
-        'is_teacher': request.user.is_teacher
-    })
+    user = User.objects.get(id=request.user.id)
+    serializer = UserSerializer(user)
+
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def student_user(request):
+    student = Student.objects.get(user=request.user)
+    serializer = StudentSerializer(student)
+    if request.user.is_student:
+        return Response(serializer.data)
+    else:
+        return Response({'error': 'User is not a student'}, status=status.HTTP_400_BAD_REQUEST)
