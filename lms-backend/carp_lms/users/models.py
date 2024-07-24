@@ -68,11 +68,11 @@ class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='student_profile')
     student_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
-    IT = 'information_technology'
-    CS = 'computer_science'
+    BSIT = 'Information Technology'
+    BSCS = 'Computer Science'
     major_choices = (
-        (IT, 'Information Technology'),
-        (CS, 'Computer Science'),
+        (BSIT, 'Information Technology'),
+        (BSCS, 'Computer Science'),
     )
     major = models.CharField(choices=major_choices, max_length=50, null=True, blank=True)
 

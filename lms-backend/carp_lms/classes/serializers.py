@@ -5,7 +5,7 @@ from .models import Class, Enrollment
 class ClassSerializer(serializers.ModelSerializer):
     class Meta:
         model = Class
-        fields = ('class_id', 'title', 'description')
+        fields = ('title', 'description', 'class_code')
 
 
 class EnrollmentSerializer(serializers.ModelSerializer):
