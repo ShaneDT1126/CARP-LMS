@@ -10,8 +10,8 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class StudentSerializer(serializers.ModelSerializer):
-    enrolled_class = EnrollmentSerializer(many=True, read_only=True)
+    enrollments = EnrollmentSerializer(many=True, read_only=True)
 
     class Meta:
         model = Student
-        fields = ['major', 'enrolled_class']
+        fields = ('major', 'enrollments')

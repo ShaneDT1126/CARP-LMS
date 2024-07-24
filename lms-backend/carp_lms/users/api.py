@@ -5,8 +5,6 @@ from rest_framework.decorators import api_view, authentication_classes, permissi
 from .forms import SignupForm
 from .models import Student, Teacher, User
 from .serializers import UserSerializer, StudentSerializer
-from classes.models import Enrollment
-from classes.serializers import EnrollmentSerializer
 
 
 @api_view(['POST'])
@@ -55,7 +53,5 @@ def student_user(request):
         return Response({'error': 'User is not a student'}, status=status.HTTP_400_BAD_REQUEST)
 
     student = Student.objects.get(user=request.user)
-    enrollment = Enrollment.objects.get(student=student)
-    student_serializer = StudentSerializer(student)
-    enrollment_serializer = EnrollmentSerializer(enrollment)
-    return Response(student_serializer.data, status=status.HTTP_200_OK)
+    serializer = StudentSerializer(student)
+    return Response(serializer.data, status=status.HTTP_200_OK)
