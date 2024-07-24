@@ -105,6 +105,7 @@ export default {
 
       await authAPI.me()
           .then(res => {
+            console.log('userdata: ',res.data)
             this.userStore.setUserInfo(res.data)
             if (res.data.is_student){
               this.$router.push({name: 'student-dashboard'})
@@ -116,6 +117,14 @@ export default {
           })
           .catch(err => {
             console.log('Error: ', err)
+          })
+
+      await authAPI.student_user()
+          .then(res => {
+            console.log('studentdata: ', res.data)
+          })
+          .catch(err => {
+            console.log('error: ', err)
           })
     },
 
