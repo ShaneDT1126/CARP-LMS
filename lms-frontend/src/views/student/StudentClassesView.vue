@@ -14,22 +14,17 @@
       <section>
         <h2 class="text-2xl font-bold mb-6 text-blue-600">Your Classes</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div v-for="(classItem, index) in classes" :key="index"
-               class="rounded-lg shadow-md overflow-hidden">
-            <div class="h-24" :class="[index === 1 ? 'bg-blue-200' : 'bg-blue-600']"></div>
-            <div class="p-4 bg-white">
-              <div class="flex justify-between items-center">
-                <span class="font-semibold">{{ classItem.code }}</span>
-                <div class="relative">
-                  <button @click="classItem.showMenu = !classItem.showMenu" class="text-gray-600 hover:text-gray-800">•••</button>
-                  <div v-if="classItem.showMenu" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Leave class</a>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">About</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <Card style="width: 20rem; overflow: hidden">
+            <template #header>
+              <figure class="image is-2by1">
+                <img src="https://bulma.io/assets/images/placeholders/640x320.png" />
+              </figure>
+            </template>
+            <template #title>
+              <div class="text-black">{{class_code}}</div>
+            </template>
+            <template #subtitle>{{class_title}}</template>
+          </Card>
         </div>
       </section>
       </div>
@@ -42,6 +37,8 @@
 <script>
 import StudentHeader from "@/components/student/StudentHeader.vue";
 import NavbarComponent from "@/components/common/NavbarComponent.vue";
+import {useStudentStore} from "@/stores/studentStore.js";
+import Card from 'primevue/card'
 
 export default {
   name: 'StudentClassesView',
@@ -49,13 +46,22 @@ export default {
   components: {
     StudentHeader,
     NavbarComponent,
+    Card
+  },
+
+  setup(){
+    const studentStore = useStudentStore()
+    const class_code = studentStore.student.class_code
+    const class_title = studentStore.student.class_title
+    return {
+      studentStore, class_code, class_title
+    }
   },
 
   data(){
     return{
+      showMenu: false,
       classes: [
-        { code: 'CSIT243 - F1' },
-        { code: 'CSIT244 - F1' },
         { code: 'CSIT243 - F1' },
       ]
     }
