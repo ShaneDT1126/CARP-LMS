@@ -7,6 +7,7 @@
 <script>
 import Toast from 'primevue/toast';
 import {useUserStore} from "@/stores/userStore.js";
+import {useStudentStore} from "@/stores/studentStore.js";
 import axios from "axios";
 export default {
   name: 'App',
@@ -17,15 +18,17 @@ export default {
 
   setup(){
     const userStore = useUserStore()
+    const studentStore = useStudentStore()
 
     return {
-      userStore
+      userStore, studentStore
     }
   },
 
 
   beforeCreate() {
     this.userStore.initStore()
+    this.studentStore.studentInitStore()
 
     const token = this.userStore.user.access
 

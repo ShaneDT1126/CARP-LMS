@@ -61,6 +61,7 @@
 <script>
 import {authAPI} from "@/services/api.js";
 import {useUserStore} from "@/stores/userStore.js";
+import {useStudentStore} from "@/stores/studentStore.js";
 import axios from "axios";
 import Dialog from 'primevue/dialog'
 export default {
@@ -82,9 +83,10 @@ export default {
 
   setup(){
     const userStore = useUserStore()
+    const studentStore = useStudentStore()
 
     return {
-      userStore
+      userStore, studentStore
     }
 
   },
@@ -122,11 +124,22 @@ export default {
       await authAPI.student_user()
           .then(res => {
             console.log('studentdata: ', res.data)
+            this.studentStore.setStudentInfo(res.data)
+            console.log('student data set')
           })
           .catch(err => {
             console.log('error: ', err)
           })
+
+      await authAPI.enrolled_classes()
+          .then(res => {
+            console.log('ENROLLED CLASSES: ', res.data)
+          })
+          .catch(err => {
+            console.log(err)
+          })
     },
+
 
     visibleToggle(){
       this.visible = !this.visible

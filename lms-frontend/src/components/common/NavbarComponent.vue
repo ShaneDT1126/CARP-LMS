@@ -30,6 +30,7 @@
 <script>
 import Dialog  from "primevue/dialog";
 import {useUserStore} from "@/stores/userStore.js";
+import {useStudentStore} from "@/stores/studentStore.js";
 
 export default {
   name: 'NavbarComponent',
@@ -40,9 +41,10 @@ export default {
 
   setup(){
     const userStore = useUserStore()
+    const studentStore = useStudentStore()
 
     return {
-      userStore
+      userStore, studentStore
     }
   },
 
@@ -58,6 +60,8 @@ export default {
     },
     logout(){
       this.userStore.removeToken()
+      this.studentStore.removeStudentInfo()
+
       this.$router.push({name: 'login-page'})
     },
   }

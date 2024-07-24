@@ -19,7 +19,7 @@
             <div class="w-16 h-16 bg-gray-300 rounded-full mr-4"></div>
             <div>
               <h2 class="text-xl font-bold text-black">{{ userStore.user.first_name }} {{ userStore.user.last_name }}</h2>
-              <p class="text-gray-600">{{ studentInfo }}</p>
+              <p class="text-gray-600">Student || {{ studentStore.student.major }}</p>
             </div>
           </div>
         </div>
@@ -48,6 +48,7 @@
 <script>
 import Dialog from "primevue/dialog";
 import {useUserStore} from "@/stores/userStore.js";
+import {useStudentStore} from "@/stores/studentStore.js";
 import NavbarComponent from "@/components/common/NavbarComponent.vue";
 import StudentHeader from "@/components/student/StudentHeader.vue";
 
@@ -62,16 +63,16 @@ export default {
 
   setup(){
     const userStore = useUserStore()
+    const studentStore = useStudentStore()
 
     return {
-      userStore
+      userStore, studentStore
     }
   },
 
   data() {
     return {
       visible: false,
-      studentInfo: 'Student || Computer Science',
       recentLessons: [
         { id: 1, title: 'I. Introduction To Computer Organization And Architecture', course: 'CSIT243 - F1', progress: 75 },
         { id: 2, title: 'II. Data Representation', course: 'CSIT243 - F1', progress: 1 },
