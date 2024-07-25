@@ -8,6 +8,7 @@ import StudentSignupView from "@/views/student/StudentSignupView.vue";
 import TeacherSignupView from "@/views/teacher/TeacherSignupView.vue";
 import TeacherDashboardView from "@/views/teacher/TeacherDashboardView.vue";
 import StudentClassesView from "@/views/student/StudentClassesView.vue";
+import StudentClassView from "@/views/student/StudentClassView.vue";
 
 
 const router = createRouter({
@@ -58,6 +59,11 @@ const router = createRouter({
       name: 'student-classes',
       component: StudentClassesView
     },
+    {
+      path: '/student-classes/:id',
+      name: 'student-class',
+      component: StudentClassView
+    }
   ]
 })
 

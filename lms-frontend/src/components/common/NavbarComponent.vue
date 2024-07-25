@@ -1,5 +1,5 @@
 <template>
-  <nav class="w-full lg:w-56 bg-blue-600 text-white p-3 flex flex-col justify-between">
+  <nav class="w-full lg:w-56 bg-blue-700 text-white p-3 flex flex-col justify-between">
     <div>
       <div class="mb-8">
         <h6 class="text-xl font-bold">CARP.ED</h6>

@@ -1,5 +1,5 @@
 <template>
-  <header class="bg-blue-600 p-4 flex justify-end items-center space-x-4 border-l-2">
+  <header class="bg-blue-700 p-4 flex justify-end items-center space-x-4 border-l-2">
     <div class="relative flex items-center">
       <input type="text" placeholder="Search... " class="p-2 mr-2 w-48 h-8">
       <button class="absolute right-3 text-gray-400">
